@@ -1,15 +1,5 @@
 #!/usr/bin/env node
 
 var app = require('../app');
-
-
-/**
- * Get port from environment and store in Express.
- */
-
 var port = process.env.PORT || '3001';
-
-
-
-
 app.listen(port);
