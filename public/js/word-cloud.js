@@ -1,11 +1,11 @@
 class WordCloud {
 
-	constructor() {
-		this.data = [];
-		this.results = [];
-		this.topicsEndpoint = '/api/v1/topics/';
-		this.templateMetaData = 'meta-data-template';
-	}
+    constructor() {
+        this.data = [];
+        this.results = [];
+        this.topicsEndpoint = '/api/v1/topics/';
+        this.templateMetaData = 'meta-data-template';
+    }
     
     fetchData() {
         var context = this;
@@ -29,6 +29,7 @@ class WordCloud {
     	var neutral = data.sentiment.neutral;
     	var negative = data.sentiment.negative;
     	var sentimentScore = data.sentimentScore;
+        var template = document.getElementById(this.templateMetaData).innerHTML;
 
     	if (positive == null) {
     		positive = 0;
@@ -42,30 +43,30 @@ class WordCloud {
     		negative = 0;
     	}
     	
-    	var color = 'sentiment-grey';
     	if (sentimentScore > 60)  {
-    		color = 'sentiment-green';
+    	    var color = 'green';
     	} else if (sentimentScore < 40) {
-            color = 'sentiment-red';
+            var color = 'red';
+    	} else {
+    		var color = 'grey';
     	}
 
-        var template = document.getElementById(this.templateMetaData).innerHTML;
+        var html = template.replace(/\{positive\}/g, positive)
+                	    .replace(/\{negative\}/g, negative)
+                	    .replace(/\{neutral\}/g, neutral);
+
 	    return  {
 	    	text: data.label, 
 	    	weight: Math.floor(data.volume / 6),
 	    	link: '#',
-	    	html: {'class': color},
+	    	html: {'class': 'sentiment-'+color},
 	    	handlers: {
                 click: function() {
-                	var html = template.replace(/\{positive\}/g, positive)
-                	    .replace(/\{negative\}/g, negative)
-                	    .replace(/\{neutral\}/g, neutral);
-                    document.getElementById('word_meta_data').innerHTML = html;
+                    document.getElementById('meta-data-view').innerHTML = html;
                 }
             }
         };
     }
-
 }
 
 var wc = new WordCloud();

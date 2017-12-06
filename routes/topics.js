@@ -11,21 +11,6 @@
     res.json(topics);
   });
 
-  router.get('/:id', function(req, res, next) {
-    var topic = topics.find(function (topic) {
-      return topic.id === req.params.id;
-    });
-
-    if (!topic) {
-      var err = new Error('Not Found');
-      err.status = 404;
-      next(err);
-      return;
-    }
-
-    res.json(topic);
-  });
-
-    module.exports = router;
+  module.exports = router;
 })();
 
