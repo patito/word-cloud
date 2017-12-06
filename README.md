@@ -1,7 +1,5 @@
 # Word Cloud Brandwatch
 
-Word cloud is my first project in JS. Good luck to me.
-
 ## Requirements
 
  * Mocha
