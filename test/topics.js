@@ -19,14 +19,6 @@ describe('Testing API Endpoints', function() {
         });
     });
 
-    describe('GET /api/v1/1751295897__DJ', function() {
-        it('it should return 200 valid ID', function(done) {
-            request(url)
-                .get('/api/v1/topics/1751295897__DJ')
-                .expect(200, done);
-        });
-    });
-
     describe('GET /api/v1/topics/Invalid_ID', function() {
         it('it should return 404 for wrong ID', function(done) {
             request(url)
