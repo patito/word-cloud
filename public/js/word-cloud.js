@@ -29,7 +29,10 @@ class WordCloud {
     	var neutral = data.sentiment.neutral;
     	var negative = data.sentiment.negative;
     	var sentimentScore = data.sentimentScore;
+    	var label = data.label;
+    	var volume = data.volume;
         var template = document.getElementById(this.templateMetaData).innerHTML;
+        
 
     	if (positive == null) {
     		positive = 0;
@@ -53,7 +56,10 @@ class WordCloud {
 
         var html = template.replace(/\{positive\}/g, positive)
                 	    .replace(/\{negative\}/g, negative)
-                	    .replace(/\{neutral\}/g, neutral);
+                	    .replace(/\{neutral\}/g, neutral)
+                	    .replace(/\{label\}/g, label)
+                	    .replace(/\{color\}/g, color)
+                	    .replace(/\{volume\}/g, volume);
 
 	    return  {
 	    	text: data.label, 

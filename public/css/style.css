@@ -9,3 +9,53 @@
 .sentiment-grey {
   color: #777;
 }
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout-green {
+    border-left-color: #468847;
+}
+
+.bs-callout-red {
+    border-left-color: #a94442;
+}
+
+.bs-callout-grey {
+    border-left-color: #777;
+}
+
+a:hover  {
+	font-weight:bold;
+}
+
+.affix {
+    top: 0;
+    width: 100%;
+    z-index: 9999 !important;
+}
+
+.affix + .container-fluid {
+     padding-top: 70px;
+}
+
+/*
+h1 {
+	color: #c9d0d4;
+	font-family: 'Droid serif', serif;
+	font-style: italic;
+	font-size: 46px; font-weight: 100;
+	line-height: 50px; letter-spacing: 1px;
+	padding: 0 0 10px; 
+	border-bottom: double #555;
+}
+
+h1 { color: #b48608; 
+	font-family: 'Droid serif', serif; font-size: 36px;
+font-weight: 400; font-style: italic; line-height: 44px; margin: 0 0 12px; text-align: center; }
+*/
