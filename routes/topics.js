@@ -8,6 +8,7 @@
   var topics = require('../topics.json').topics;
 
   router.get('/', function(req, res) {
+  	res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(topics);
   });
 
