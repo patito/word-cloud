@@ -1,5 +1,5 @@
 {
-  "name": "word-cloud-b",
+  "name": "word-cloud",
   "version": "1.0.0",
   "description": "word cloud brandwatch",
   "main": "app.js",
@@ -7,15 +7,17 @@
     "test": "mocha",
     "start": "node ./bin/www"
   },
-  "author": "",
+  "author": "patito <benatto@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "jquery": "^3.2.1",
     "nodemon": "^1.12.4",
     "supertest": "^3.0.0"
   },
   "devDependencies": {
     "mocha": "^4.0.1"
-  }
+  },
+  "repository": "git@github.com:patito/word-cloud.git"
 }
