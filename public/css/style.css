@@ -69,3 +69,15 @@ div.jqcloud {
 }
 
 div.jqcloud span { padding: 0; }
+
+.top-bw {
+    padding-top: 1px;
+    background-color: #39CCCC;
+    color: #fff;
+    height: 80px;
+}
+
+.meta-data-bw {
+    width: 250px;
+    height: 250px;
+}
