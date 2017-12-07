@@ -7,12 +7,24 @@
  * Node.js
  * Express
  * NPM
+ * Bower
+
+## Install Bower
+
+```
+$ brew install bower
+```
 
 ## Project Build
 
 To install local dependencies:
 ```
 $ npm install
+```
+
+Frontend dependencies:
+```
+$ bower install
 ```
 
 To install Mocha (global)
@@ -30,4 +42,3 @@ $ npm start
 ```
 $ npm test
 ```
-

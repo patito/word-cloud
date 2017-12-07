@@ -1,0 +1,22 @@
+{
+  "name": "word-cloud",
+  "description": "word cloud brandwatch",
+  "main": "app.js",
+  "authors": [
+    "patito <benatto@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/patito/word-cloud",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "jqcloud2": "^2.0.3"
+  }
+}
