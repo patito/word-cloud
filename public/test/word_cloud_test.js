@@ -53,6 +53,14 @@ describe('Word Cloud', function() {
     it('Berlin volume should be 165', function() {
       assert.equal(t0.volume, 165);
     });
+
+    it('Brighton positive sentiment should be 22', function() {
+      assert.equal(t1.positive, 22);
+    });
+
+    it('Brighton negative sentiment should be 0', function() {
+      assert.equal(t1.negative, 0);
+    });
   });
 
 });

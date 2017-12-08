@@ -1,3 +1,6 @@
+/* Parse topics and return only necessary information to
+build the word cloud. */
+
 class WordCloud {
 
     constructor(topics) {
@@ -33,10 +36,10 @@ class WordCloud {
     }
 
     parseTopic(topic) {
-	    return  {
-	    	text: topic.label, 
-	    	weight: Math.floor(topic.volume / 6),
-	    	link: '#',
+        return  {
+            text: topic.label, 
+            weight: Math.floor(topic.volume / 6),
+            link: '#',
             positive: this.getSentiment(topic.sentiment.positive),
             negative: this.getSentiment(topic.sentiment.negative),
             neutral: this.getSentiment(topic.sentiment.neutral),

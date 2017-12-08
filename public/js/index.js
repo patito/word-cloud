@@ -1,5 +1,7 @@
 'use strict';
 
+/* Create and prepare new topic and metadata to be
+presented in the browser. */
 function createNewTopic(topic, template) {
     
     var html = template.replace(/\{positive\}/g, topic.positive)
@@ -22,6 +24,8 @@ function createNewTopic(topic, template) {
     }
 }
 
+/* Build word cloud array used by JQCloud object and
+present the information in the browser. */
 function show(data) {
     var wc = new WordCloud(data);
     var topics = wc.buildTopics();
