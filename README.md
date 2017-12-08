@@ -1,5 +1,7 @@
 # Word Cloud Brandwatch
 
+Running on AWS: [http://benatto.xyz](http://benatto.xyz)
+
 ## Requirements
 
  * Mocha
@@ -42,3 +44,4 @@ $ npm start
 ```
 $ npm test
 ```
+
