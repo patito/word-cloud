@@ -1,26 +1,43 @@
 'use strict';
 
-var api = (function() {
-    var hostname = 'localhost';
-    var port = '3001';
-
-    function apiRequest(method, url, successCallback, data) {
-        var req = $.ajax({
-            type: method,
-            dataType: 'json',
-            url: `http://${hostname}:${port}${url}`,
-            data: JSON.stringify(data),
-            success: successCallback
-        });
-        return req;
-    }
-
-    function getResource(params, successCallback) {
-        return apiRequest('GET', params, successCallback, {});
-    }
+function createNewTopic(topic, template) {
+    
+    var html = template.replace(/\{positive\}/g, topic.positive)
+                    .replace(/\{negative\}/g, topic.negative)
+                    .replace(/\{neutral\}/g, topic.neutral)
+                    .replace(/\{label\}/g, topic.text)
+                    .replace(/\{color\}/g, topic.color)
+                    .replace(/\{volume\}/g, topic.volume);
 
     return {
-        getResource: getResource
-    };
+        text: topic.text, 
+        weight: Math.floor(topic.volume / 6),
+        link: '#',
+        html: {'class': 'sentiment-'+topic.color},
+        handlers: {
+            click: function() {
+                document.getElementById('meta-data-view').innerHTML = html;
+            }
+        }
+    }
+}
+
+function show(data) {
+    var wc = new WordCloud(data);
+    var topics = wc.buildTopics();
+    var wordCloudArray = [];
+    var template = document.getElementById('meta-data-template').innerHTML;
+    
+    for (var i = 0; i < topics.length; i++) {
+        var topic = createNewTopic(topics[i], template);
+        wordCloudArray.push(topic);        
+    }
+    $("#word_cloud").jQCloud(wordCloudArray);
+}
+
+var buildWordCloud = (function() {
+    requests.get('/api/v1/topics/', function(data) {
+        show(data);
+    });
 }());
 

@@ -17,6 +17,7 @@
   "dependencies": {
     "jquery": "^3.2.1",
     "bootstrap": "^3.3.7",
-    "jqcloud2": "^2.0.3"
+    "jqcloud2": "^2.0.3",
+    "chai": "^4.1.2"
   }
 }
