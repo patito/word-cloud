@@ -1,80 +1,53 @@
+/* Parse topics and return only necessary information to
+build the word cloud. */
+
 class WordCloud {
 
-    constructor() {
-        this.data = [];
-        this.results = [];
-        this.topicsEndpoint = '/api/v1/topics/';
-        this.templateMetaData = 'meta-data-template';
+    constructor(topics) {
+        this.topics = topics;
     }
     
-    fetchData() {
-        var context = this;
-        api.getResource(context.topicsEndpoint, function(data) {
-            context.data = data;
-        }).then(() => {
-            context.build();
-        });
-    }
-
-    build() {
-        for (var i = 0; i < this.data.length; i++) {
-            var item = this.getItem(this.data[i]);
-		    this.results.push(item);
+    buildTopics() {
+        var results = [];
+        for (var i = 0; i < this.topics.length; i++) {
+            var item = this.parseTopic(this.topics[i]);
+		    results.push(item);
 	    }
-        $("#word_cloud").jQCloud(this.results);
+
+        return results;
     }
 
-    getItem(data) {
-    	var positive = data.sentiment.positive;
-    	var neutral = data.sentiment.neutral;
-    	var negative = data.sentiment.negative;
-    	var sentimentScore = data.sentimentScore;
-    	var label = data.label;
-    	var volume = data.volume;
-        var template = document.getElementById(this.templateMetaData).innerHTML;
-        
+    getColor(sentimentScore) {
+        if (sentimentScore > 60)  {
+            return 'green';
+        } else if (sentimentScore < 40) {
+            return 'red';
+        } else {
+            return 'grey';
+        }
+    }
 
-    	if (positive == null) {
-    		positive = 0;
-    	}
+    getSentiment(sentiment) {
+        if (sentiment == null) {
+            return 0;
+        } else {
+            return sentiment;
+        }
+    }
 
-    	if (neutral == null) {
-    		neutral = 0;
-    	}
-
-    	if (negative == null) {
-    		negative = 0;
-    	}
-    	
-    	if (sentimentScore > 60)  {
-    	    var color = 'green';
-    	} else if (sentimentScore < 40) {
-            var color = 'red';
-    	} else {
-    		var color = 'grey';
-    	}
-
-        var html = template.replace(/\{positive\}/g, positive)
-                	    .replace(/\{negative\}/g, negative)
-                	    .replace(/\{neutral\}/g, neutral)
-                	    .replace(/\{label\}/g, label)
-                	    .replace(/\{color\}/g, color)
-                	    .replace(/\{volume\}/g, volume);
-
-	    return  {
-	    	text: data.label, 
-	    	weight: Math.floor(data.volume / 6),
-	    	link: '#',
-	    	html: {'class': 'sentiment-'+color},
-	    	handlers: {
-                click: function() {
-                    document.getElementById('meta-data-view').innerHTML = html;
-                }
-            }
+    parseTopic(topic) {
+        return  {
+            text: topic.label, 
+            weight: Math.floor(topic.volume / 6),
+            link: '#',
+            positive: this.getSentiment(topic.sentiment.positive),
+            negative: this.getSentiment(topic.sentiment.negative),
+            neutral: this.getSentiment(topic.sentiment.neutral),
+            color: this.getColor(topic.sentimentScore),
+            volume: topic.volume
         };
     }
 }
 
-var wc = new WordCloud();
-wc.fetchData();
+
 
