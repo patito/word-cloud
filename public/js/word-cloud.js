@@ -11,8 +11,8 @@ class WordCloud {
         var results = [];
         for (var i = 0; i < this.topics.length; i++) {
             var item = this.parseTopic(this.topics[i]);
-		    results.push(item);
-	    }
+            results.push(item);
+        }
 
         return results;
     }

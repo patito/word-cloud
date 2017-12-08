@@ -4,7 +4,7 @@ describe('Word Cloud', function() {
   var wc = new WordCloud(testData);
 
   describe('Build Topics', function() {
-  	var topics = wc.buildTopics();
+    var topics = wc.buildTopics();
     it('topics length should be 3', function() {
       assert.equal(topics.length, 3);
     });
@@ -39,9 +39,9 @@ describe('Word Cloud', function() {
   });
 
   describe('Parse Topic', function() {
-  	var t2 = wc.parseTopic(testData[2]);
-  	var t1 = wc.parseTopic(testData[1]);
-  	var t0 = wc.parseTopic(testData[0]);
+    var t2 = wc.parseTopic(testData[2]);
+    var t1 = wc.parseTopic(testData[1]);
+    var t0 = wc.parseTopic(testData[0]);
     it('California word color should be grey', function() {
       assert.equal(t2.color, 'grey');
     });
